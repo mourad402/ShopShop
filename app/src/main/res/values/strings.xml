@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">ShopShop</string>
     <string name="title_home">Home</string>
+    <string name="title_my_lists">Lists</string>
+    <string name="title_my_discounts">Discounts</string>
+    <string name="title_my_ideas">Ideas</string>
+    <string name="title_my_profile">Profile</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_compose">ComposeActivity</string>
 </resources>

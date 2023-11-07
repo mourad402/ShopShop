@@ -18,20 +18,23 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule{
+object AppModule {
+
+
 
     @Provides
     fun provideBaseUrl() = "Constants.BASE_URL"
 
     @Singleton
     @Provides
-    fun provideOkHttpClient() = if (BuildConfig.DEBUG){
-        val loggingInterceptor =HttpLoggingInterceptor()
+    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .build()
-    }else{
+    } else {
         OkHttpClient
             .Builder()
             .build()
@@ -45,11 +48,12 @@ object AppModule{
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi, BASE_URL:String): Retrofit = Retrofit.Builder()
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .baseUrl(BASE_URL)
-        .client(okHttpClient)
-        .build()
+    fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi, BASE_URL: String): Retrofit =
+        Retrofit.Builder()
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .build()
 
     @Provides
     @Singleton

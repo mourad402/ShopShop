@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.fourohtwo.shopshop.ui.dashboard.DashboardViewModel" />
+            type="com.fourohtwo.shopshop.ui.dashboard.DashboardViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -34,7 +34,17 @@ class DashboardFragment : Fragment() {
 //        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
 //            textView.text = it
 //        })
-        return root
+
+        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
+        binding.lifecycleOwner = this
+
+        // Giving the binding access to the OverviewViewModel
+        binding.viewModel = dashboardViewModel
+
+        // Sets the adapter of the photosGrid RecyclerView
+        binding.photosGrid.adapter = PhotoGridAdapter()
+
+        return binding.root
     }
 
     override fun onDestroyView() {
